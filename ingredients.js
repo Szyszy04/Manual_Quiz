@@ -111,7 +111,7 @@ export const ingredients = [
   { id: 108, name: "oliwy truflowej", measure: "drops" },
   { id: 109, name: "przecier ananasowy", measure: "ml" },
   { id: 110, name: "przecieru z marakui", measure: "ml" },
-  { id: 111, name: "różowy glitter", measure: "pinch" },
+  { id: 111, name: "różowy glitter", measure: "spray" },
   { id: 112, name: "zalewy z wiśni", measure: "ml" },
   { id: 113, name: "Ćwiartka limonki", measure: "quarter" },
   { id: 114, name: "Fernet Branca", measure: "ml" },
