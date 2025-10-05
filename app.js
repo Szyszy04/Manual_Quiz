@@ -1,25 +1,23 @@
-import {
-    ingredients,
-    getIngredientById,
-} from './ingredients.js';
+import { ingredients, getIngredientById } from './ingredients.js';
 
-import {
-    drinkLibrary,
-    findDrinkByName
-} from './drinks.js';
+import { recipes, getRecipeWithNames, getRecipeWithNamesSimple } from './recipes.js';
 
-import {
-    recipes,
-    getRecipeWithNames,
-    getRecipeWithNamesSimple
-} from './recipes.js';
-
-import {
-    vodkas,
-    glassOptions
-} from './data.js';
+import { vodkas, glassOptions, drinkGlasses, drinkDecorations, drinkCategories, findDrinkCategory } from './data.js';;
 
 const { createApp, ref, computed } = Vue;
+
+// Implementacja findDrinkByName używająca nowej struktury danych
+function findDrinkByNameLocal(name) {
+    const category = findDrinkCategory(name);
+    if (!category) return null;
+
+    return {
+        name: name,
+        category: category,
+        glass: drinkGlasses[name] || "Unknown",
+        decoration: drinkDecorations[name] || ""
+    };
+}
 
 createApp({
     setup() {
@@ -60,7 +58,7 @@ createApp({
         function getCategoryEmoji(category) {
             const emojiMap = {
                 'Wódka': '🍀',
-                'Gin': '🌿', 
+                'Gin': '🌿',
                 'Whiskey': '🥃',
                 'Rum': '🏴☠️',
                 'Tequila': '🌵',
@@ -238,7 +236,7 @@ createApp({
 
         const correctGlass = computed(() => {
             if (currentQuestion.value.type === 'builder' && currentQuestion.value.drinkName) {
-                const drink = findDrinkByName(currentQuestion.value.drinkName);
+                const drink = findDrinkByNameLocal(currentQuestion.value.drinkName);
                 return drink?.glass || '';
             }
             return '';
@@ -261,10 +259,10 @@ createApp({
         function getDrinksFromSelectedCategories() {
             const availableDrinks = [];
             selectedAlcoholCategoriesList.value.forEach(category => {
-                if (drinkLibrary[category]) {
-                    drinkLibrary[category].forEach(drink => {
-                        if (recipes[drink.name]) {
-                            availableDrinks.push(drink.name);
+                if (drinkCategories[category]) {
+                    drinkCategories[category].forEach(drinkName => {
+                        if (recipes[drinkName]) {
+                            availableDrinks.push(drinkName);
                         }
                     });
                 }
@@ -278,7 +276,7 @@ createApp({
 
             const randomDrink = availableDrinks[Math.floor(Math.random() * availableDrinks.length)];
             const allGlasses = shuffleArray([...glassOptions]);
-            const drinkInfo = findDrinkByName(randomDrink);
+            const drinkInfo = findDrinkByNameLocal(randomDrink);
 
             return {
                 type: 'builder',
@@ -704,7 +702,9 @@ createApp({
             checkGlass,
 
             // Other
-            glassOptions
+            glassOptions,
+            findDrinkByNameLocal
         };
+
     }
 }).mount('#app');
