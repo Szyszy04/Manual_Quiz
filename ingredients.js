@@ -44,7 +44,6 @@ export const ingredients = [
   { id: 41, name: "Galliano Autentico", measure: "ml" },
   { id: 42, name: "Galliano Espresso", measure: "ml" },
   { id: 43, name: "Giffard Bitter Syrop", measure: "ml" },
-  { id: 44, name: "Gin", measure: "ml" },
   { id: 45, name: "Gin bezalkoholowy", measure: "ml" },
   { id: 46, name: "Gold Rum", measure: "ml" },
   { id: 47, name: "Green Chartreuse", measure: "ml" },
