@@ -20,7 +20,7 @@ export const ingredients = [
   { id: 16, name: "Dewar’s 8 Caribbean Smooth", measure: "ml" },
   { id: 17, name: "Bloody Mary Mix", measure: "ml" },
   { id: 18, name: "Bombay Sapphire", measure: "ml" },
-  { id: 19, name: "Maker’s Mark", measure: "ml" },
+  { id: 19, name: "Maker's Mark", measure: "ml" },
   { id: 20, name: "Briottet - Violet", measure: "ml" },
   { id: 21, name: "Cachaça", measure: "ml" },
   { id: 22, name: "Caribbean Blend Rum", measure: "ml" },
