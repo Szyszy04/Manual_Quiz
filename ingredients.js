@@ -58,7 +58,7 @@ export const ingredients = [
   { id: 56, name: "Lillet Blanc", measure: "ml" },
   { id: 57, name: "Liście mięty", measure: "leaves" },
   { id: 58, name: "London Dry Gin", measure: "ml" },
-  { id: 59, name: "Maraschino", measure: "ml" },
+  { id: 59, name: "Luxardo Maraschino", measure: "ml" },
   { id: 60, name: "Martini Bitter", measure: "ml" },
   { id: 61, name: "Martini Extra Dry", measure: "ml" },
   { id: 62, name: "Martini Fiero", measure: "ml" },
