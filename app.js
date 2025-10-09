@@ -85,7 +85,7 @@ createApp({
                     "Amaro Nonino", "Aperol", "Briottet - Violet", "Chambord", "Chartreuse Green", "Cherry Heering",
                     "Cointreau", "Creme De Cacao", "Creme De Menthe", "D.O.M Benedictine", "Falernum",
                     "Galliano Amaretto", "Galliano Autentico", "Galliano Espresso", "Green Chartreuse",
-                    "Maraschino", "Mozart Black Dark Chocolate", "Peach Liqueur", "Suze", "Fernet Branca"
+                    "Luxardo Maraschino", "Mozart Black Dark Chocolate", "Peach Liqueur", "Suze", "Fernet Branca"
                 ],
                 "Soki i napoje": [
                     "Big Tom Tomato Juice", "Fake Lime Juice", "Sok grejpfrutowy", "Sok z cytryny", "Sok z limonki",
