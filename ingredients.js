@@ -114,7 +114,8 @@ export const ingredients = [
   { id: 113, name: "Ćwiartka limonki", measure: "quarter" },
   { id: 114, name: "Fernet Branca", measure: "ml" },
   { id: 115, name: "kawa przelewowa", measure: "ml"},
-  { id: 116, name: "Jim Beam Black", measure: "ml"}
+  { id: 116, name: "Jim Beam Black", measure: "ml"},
+  { id: 117, name: "Fords", measure: "ml"}
 ];
 
 // Miary używane w aplikacji
