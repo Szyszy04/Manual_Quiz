@@ -414,7 +414,7 @@ export const recipes = {
   ],
 
   "Bombay & Tonic": [
-    {"ingredientId": 18, "amount": 40},
+    {"ingredientId": 58, "amount": 40},
     {"ingredientId": 98, "amount": 100}
   ],
 
