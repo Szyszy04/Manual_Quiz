@@ -462,7 +462,7 @@ export const recipes = {
   ],
 
   "DRY MARTINI": [
-    {"ingredientId": 58, "amount": 50},
+    {"ingredientId": 117, "amount": 50},
     {"ingredientId": 67, "amount": 10},
     {"ingredientId": 70, "amount": 1}
   ],
@@ -517,7 +517,7 @@ export const recipes = {
   ],
 
   "RAMOS GIN FIZZ": [
-    {"ingredientId": 58, "amount": 50},
+    {"ingredientId": 117, "amount": 50},
     {"ingredientId": 90, "amount": 20},
     {"ingredientId": 85, "amount": 15},
     {"ingredientId": 86, "amount": 15},
