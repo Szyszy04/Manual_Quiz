@@ -453,7 +453,7 @@ export const recipes = {
     {"ingredientId": 6, "amount": 15}
   ],
 
-  "Corpse": [
+  "Corpse Reviver #2": [
     {"ingredientId": 58, "amount": 20},
     {"ingredientId": 29, "amount": 20},
     {"ingredientId": 30, "amount": 20},
