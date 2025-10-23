@@ -72,6 +72,7 @@ export const drinkGlasses = {
     "Bombay & Tonic": "Copa Bombay",
     "BRAMBLE": "Collins",
     "BREAKFAST MARTINI": "Nick & Nora",
+    "CHARLIE CHAPLIN": "Nick & Nora",
     "CHRYSANTHEMUM": "Nick & Nora",
     "CLOVER CLUB": "Nick & Nora",
     "Corpse": "Nick & Nora",
