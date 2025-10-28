@@ -182,6 +182,7 @@ export const drinkDecorations = {
     "Bombay & Tonic": "1/4 limonki ułożona po środku koktajlu",
     "BRAMBLE": "kwiat gipsówki",
     "BREAKFAST MARTINI": "olejki pomarańczowe i żółta różyczka położona na wierzchu.",
+    "CHARLIE CHAPLIN": "suszony kwiatostan róży",
     "CHRYSANTHEMUM": "zest z cytryny wycięty nożyczkami krawieckimi -",
     "CLOVER CLUB": "na środku koktajlu odrobinę maliny iofilizowanej + kwiat",
     "Corpse": "zest z cytryny wycięty nożyczkami krawieckimi -",
