@@ -45,7 +45,6 @@ export const ingredients = [
   { id: 43, name: "Giffard Bitter Syrop", measure: "ml" },
   { id: 45, name: "Gin bezalkoholowy", measure: "ml" },
   { id: 46, name: "Gold Rum", measure: "ml" },
-  { id: 47, name: "Green Chartreuse", measure: "ml" },
   { id: 48, name: "Half Half", measure: "ml" },
   { id: 49, name: "Hennessy V.S.", measure: "ml" },
   { id: 50, name: "Inca Bitters", measure: "drops" },
