@@ -458,7 +458,7 @@ createApp({
 
             let isCorrect = true;
             for (let ingredient of correct) {
-                const userAmount = parseInt(ingredientAmounts.value[ingredient.name]) || 0;
+                const userAmount = parseFloat((ingredientAmounts.value[ingredient.name] || '').toString().replace(',', '.')) || 0;
                 if (Math.abs(userAmount - ingredient.amount) > 0) {
                     isCorrect = false;
                     break;
