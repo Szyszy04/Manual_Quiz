@@ -84,7 +84,7 @@ createApp({
                 "Likiery": [
                     "Amaro Nonino", "Aperol", "Briottet - Violet", "Chambord", "Chartreuse Green", "Cherry Heering",
                     "Cointreau", "Creme De Cacao", "Creme De Menthe", "D.O.M Benedictine", "Falernum",
-                    "Galliano Amaretto", "Galliano Autentico", "Galliano Espresso", "Green Chartreuse",
+                    "Galliano Amaretto", "Galliano Autentico", "Galliano Espresso",
                     "Luxardo Maraschino", "Mozart Black Dark Chocolate", "Peach Liqueur", "Suze", "Fernet Branca"
                 ],
                 "Soki i napoje": [
