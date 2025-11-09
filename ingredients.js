@@ -6,7 +6,7 @@ export const ingredients = [
   { id: 2, name: "Absynth Spray", measure: "spray" },
   { id: 3, name: "Agave Mix", measure: "ml" },
   { id: 4, name: "Dewar's 12 YO", measure: "ml" },
-  { id: 5, name: "Aged Rum", measure: "ml" },
+  { id: 5, name: "Bacardi 4 Anejo Cuatro", measure: "ml" },
   { id: 6, name: "Albumina", measure: "ml" },
   { id: 7, name: "Amaro Nonino", measure: "ml" },
   { id: 8, name: "Angostura Aromatic Bitters", measure: "ml" },
@@ -44,7 +44,7 @@ export const ingredients = [
   { id: 42, name: "Galliano Espresso", measure: "ml" },
   { id: 43, name: "Giffard Bitter Syrop", measure: "ml" },
   { id: 45, name: "Gin bezalkoholowy", measure: "ml" },
-  { id: 46, name: "Gold Rum", measure: "ml" },
+  { id: 46, name: "Bacardi Carta Oro", measure: "ml" },
   { id: 48, name: "Half Half", measure: "ml" },
   { id: 49, name: "Hennessy V.S.", measure: "ml" },
   { id: 50, name: "Inca Bitters", measure: "drops" },
@@ -65,7 +65,7 @@ export const ingredients = [
   { id: 65, name: "Mozart Black Dark Chocolate", measure: "ml" },
   { id: 66, name: "Napar z herbaty Earl Grey", measure: "ml" },
   { id: 67, name: "Noilly Prat", measure: "ml" },
-  { id: 68, name: "Old Tom Gin", measure: "ml" },
+  { id: 68, name: "Hayman’s Old Tom Gin", measure: "ml" },
   { id: 69, name: "Oleo Saccharum", measure: "ml" },
   { id: 70, name: "Orange Bitters", measure: "dash" },
   { id: 71, name: "Orgeat", measure: "ml" },
@@ -114,7 +114,8 @@ export const ingredients = [
   { id: 114, name: "Fernet Branca", measure: "ml" },
   { id: 115, name: "kawa przelewowa", measure: "ml"},
   { id: 116, name: "Jim Beam Black", measure: "ml"},
-  { id: 117, name: "Fords", measure: "ml"}
+  { id: 117, name: "Fords", measure: "ml"},
+  { id: 118, name: "Bacardi 8 yo", measure: "ml"}
 ];
 
 // Miary używane w aplikacji
