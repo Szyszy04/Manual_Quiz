@@ -71,10 +71,10 @@ createApp({
         function categorizeIngredientsForBuilder() {
             const categorization = {
                 "Główne alkohole": [
-                    "Wódka", "Aster Gin", "Bombay Sapphire", "Archer's", "Old Tom Gin", "Sloe Gin", "Fords",
+                    "Ostoya", "Aster Gin", "Bombay Sapphire", "Archer's", "Hayman’s Old Tom Gin", "Hayman’s Sloe Gin", "Fords",
                     "Dewar's 12 YO", "Dewar's 8 Caribbean Smooth", "Maker's Mark", "Jim Beam Black", "Jim Beam Rye", "Tullamore DEW",
-                    "Aged Rum", "Caribbean Blend Rum", "Gold Rum", "Jamaican Rum", "Overproof White Rum", "Rum", "Spiced Rum", "White Rum",
-                    "Tequila", "Pisco", "Cachaça"
+                    "Bacardi 4 Anejo Cuatro", "Bank’s Rum", "Bacardi Carta Oro", "Smith & Cross", "Rum Bar White Overproof", "Bacardi Spicedm", "Bcardi 8 yo", "Bacardi Carta Blanca",
+                    "Rooster Rojo Blanc", "Pisco", "Cachaça"
                 ],
                 "Dodatkowe alkohole": [
                     "Hennessy V.S.", "Cherry Brandy", "Papidoux V.S.O.P.", "Absynth", "Absynth Spray", "Islay Malt Spray",
