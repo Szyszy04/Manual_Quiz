@@ -220,7 +220,7 @@ export const recipes = {
   ],
 
   "Right Hand Cocktail": [
-    {"ingredientId": 5, "amount": 30},
+    {"ingredientId": 118, "amount": 30},
     {"ingredientId": 60, "amount": 20},
     {"ingredientId": 63, "amount": 20},
     {"ingredientId": 65, "amount": 5}
