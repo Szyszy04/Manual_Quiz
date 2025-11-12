@@ -24,7 +24,7 @@ createApp({
         // ===== STAN APLIKACJI =====
         const currentScreen = ref('start');
         const selectedCategories = ref({
-            proportions: true,
+            proportions: false,
             review: false,
             vodka: false,
             builder: false
@@ -53,6 +53,9 @@ createApp({
         const selectedGlass = ref('');
         const showBuilderRecipe = ref(false);
         const showDecorationSuccess = ref(false);
+        const selectedDecoration = ref('');
+        const decorationOptions = ref([]);
+        const showFullRecipe = ref(false);
 
         // ===== FUNKCJE POMOCNICZE =====
         function getCategoryEmoji(category) {
@@ -238,6 +241,14 @@ createApp({
             if (currentQuestion.value.type === 'builder' && currentQuestion.value.drinkName) {
                 const drink = findDrinkByNameLocal(currentQuestion.value.drinkName);
                 return drink?.glass || '';
+            }
+            return '';
+        });
+
+        const correctDecoration = computed(() => {
+            if (currentQuestion.value.type === 'builder' && currentQuestion.value.drinkName) {
+                const drink = findDrinkByNameLocal(currentQuestion.value.drinkName);
+                return drink?.decoration || '';
             }
             return '';
         });
@@ -484,11 +495,10 @@ createApp({
 
         function checkGlass() {
             if (hasCorrectGlass.value) {
-                score.value++;
-                showDecorationSuccess.value = true;
-                setTimeout(() => {
-                    nextBuilderQuestion();
-                }, 3000);
+                // Przejdź do kroku 4 - wybór dekoracji
+                builderStep.value = 4;
+                selectedDecoration.value = '';
+                generateDecorationOptions();
             } else {
                 showBuilderRecipe.value = true;
                 if (!practiceMode.value) {
@@ -503,13 +513,62 @@ createApp({
             }
         }
 
-        function resetCurrentBuilderQuestion() {
+        function generateDecorationOptions() {
+            const correct = correctDecoration.value;
+            // Pobierz wszystkie dekoracje z drinkDecorations
+            const allDecorations = Object.values(drinkDecorations).filter(dec => dec && dec !== correct);
+
+            // Wybierz 3 losowe niepoprawne dekoracje
+            const shuffled = shuffleArray(allDecorations);
+            const wrongDecorations = shuffled.slice(0, 3);
+
+            // Stwórz tablicę 4 opcji (1 poprawna + 3 losowe)
+            const options = [correct, ...wrongDecorations];
+
+            // Przemieszaj opcje
+            decorationOptions.value = shuffleArray(options);
+        }
+
+        function checkDecoration(decoration) {
+            selectedDecoration.value = decoration;
+
+            if (decoration === correctDecoration.value) {
+                // Poprawna dekoracja - pokaż cały przepis i zwiększ wynik
+                score.value++;
+                showFullRecipe.value = true;
+
+                setTimeout(() => {
+                    showFullRecipe.value = false;
+                    nextBuilderQuestion();
+                }, 4000);
+            } else {
+                // Niepoprawna dekoracja - pokaż przepis
+                showFullRecipe.value = true;
+
+                if (!practiceMode.value) {
+                    setTimeout(() => {
+                        showFullRecipe.value = false;
+                        nextBuilderQuestion();
+                    }, 4000);
+                } else {
+                    setTimeout(() => {
+                        showFullRecipe.value = false;
+                        resetCurrentBuilderQuestion();
+                    }, 4000);
+                }
+            }
+        }
+
+                function resetCurrentBuilderQuestion() {
             builderStep.value = 1;
             selectedIngredients.value = new Set();
             ingredientAmounts.value = {};
             selectedGlass.value = '';
+            selectedDecoration.value = '';
+            decorationOptions.value = [];
             showBuilderRecipe.value = false;
             showDecorationSuccess.value = false;
+            showFullRecipe.value = false;
         }
 
         function togglePracticeMode() {
@@ -521,8 +580,11 @@ createApp({
             selectedIngredients.value = new Set();
             ingredientAmounts.value = {};
             selectedGlass.value = '';
+            selectedDecoration.value = '';
+            decorationOptions.value = [];
             showBuilderRecipe.value = false;
             showDecorationSuccess.value = false;
+            showFullRecipe.value = false;
 
             const newQuestion = createBuilderQuestion();
             if (newQuestion) {
@@ -686,13 +748,17 @@ createApp({
             selectedIngredientsCount,
             ingredientAmounts,
             selectedGlass,
+            selectedDecoration,
+            decorationOptions,
             showBuilderRecipe,
             showDecorationSuccess,
+            showFullRecipe,
             groupedIngredientsForBuilder,
             shuffledGlassOptions,
             correctIngredients,
             hasCorrectIngredients,
             correctGlass,
+            correctDecoration,
             hasCorrectGlass,
             builderCorrectRecipeWithNames,
             toggleIngredient,
@@ -700,6 +766,8 @@ createApp({
             checkIngredients,
             checkProportions,
             checkGlass,
+            checkDecoration,
+            generateDecorationOptions,
 
             // Other
             glassOptions,
