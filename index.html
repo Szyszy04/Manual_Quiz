@@ -224,6 +224,40 @@
                         </button>
                     </div>
 
+                    <!-- KROK 4: Wybór dekoracji -->
+                    <div v-if="builderStep === 4 && !showFullRecipe" class="builder-step">
+                        <h4>Krok 4: Wybierz odpowiednią dekorację</h4>
+
+                        <div class="decorations-grid">
+                            <button v-for="(decoration, index) in decorationOptions" 
+                                    :key="index"
+                                    @click="checkDecoration(decoration)"
+                                    :class="['decoration-btn', { 'selected': selectedDecoration === decoration }]">
+                                {{ decoration }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Wyświetlenie pełnego przepisu po wyborze dekoracji -->
+                    <div v-if="showFullRecipe && builderStep === 4" class="recipe-reveal" :class="{ 'success': selectedDecoration === correctDecoration, 'error': selectedDecoration !== correctDecoration }">
+                        <h4 v-if="selectedDecoration === correctDecoration">✅ Doskonale! Pełny przepis:</h4>
+                        <h4 v-else>❌ Niepoprawnie! Pełny przepis:</h4>
+
+                        <div class="recipe">
+                            <h5>{{ currentQuestion.drinkName }}</h5>
+                            <div class="ingredients-list">
+                                <div v-for="ingredient in builderCorrectRecipeWithNames" 
+                                     :key="ingredient.name" 
+                                     class="ingredient">
+                                    <span class="amount">{{ ingredient.amount }} ml</span>
+                                    <span class="name">{{ ingredient.name }}</span>
+                                </div>
+                            </div>
+                            <p><strong>Szkło:</strong> {{ correctGlass }}</p>
+                            <p><strong>Dekoracja:</strong> {{ correctDecoration }}</p>
+                        </div>
+                    </div>
+
                     <!-- Wyświetlenie błędnej odpowiedzi -->
                     <div v-if="showBuilderRecipe" class="recipe-reveal error">
                         <h4>❌ Niepoprawnie! Poprawny przepis:</h4>
