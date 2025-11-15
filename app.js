@@ -76,7 +76,7 @@ createApp({
                 "Główne alkohole": [
                     "Ostoya", "Aster Gin", "Bombay Sapphire", "Archer's", "Hayman’s Old Tom Gin", "Hayman’s Sloe Gin", "Fords",
                     "Dewar's 12 YO", "Dewar's 8 Caribbean Smooth", "Maker's Mark", "Jim Beam Black", "Jim Beam Rye", "Tullamore DEW",
-                    "Bacardi 4 Anejo Cuatro", "Bank’s Rum", "Bacardi Carta Oro", "Smith & Cross", "Rum Bar White Overproof", "Bacardi Spicedm", "Bcardi 8 yo", "Bacardi Carta Blanca",
+                    "Bacardi 4 Anejo Cuatro", "Bank’s Rum", "Bacardi Carta Oro", "Smith & Cross", "Rum Bar White Overproof", "Bacardi Spicedm", "Bacardi 8 yo", "Bacardi Carta Blanca",
                     "Rooster Rojo Blanc", "Pisco", "Cachaça"
                 ],
                 "Dodatkowe alkohole": [
