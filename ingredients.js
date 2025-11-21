@@ -22,7 +22,7 @@ export const ingredients = [
   { id: 19, name: "Maker's Mark", measure: "ml" },
   { id: 20, name: "Briottet - Violet", measure: "ml" },
   { id: 21, name: "Cachaça", measure: "ml" },
-  { id: 22, name: "Bank’s Rum", measure: "ml" },
+  { id: 22, name: "Bank's Rum", measure: "ml" },
   { id: 23, name: "Carpano Antica Formula", measure: "ml" },
   { id: 24, name: "Chambord", measure: "ml" },
   { id: 25, name: "Chartreuse Green", measure: "ml" },
