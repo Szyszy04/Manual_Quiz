@@ -79,7 +79,7 @@ export const ingredients = [
   { id: 79, name: "Red Wine", measure: "ml" },
   { id: 80, name: "Ruby Port", measure: "ml" },
   { id: 82, name: "Jim Beam Rye", measure: "ml" },
-  { id: 83, name: "Hayman’s Sloe Gin", measure: "ml" },
+  { id: 83, name: "Hayman's Sloe Gin", measure: "ml" },
   { id: 84, name: "Sok grejpfrutowy", measure: "ml" },
   { id: 85, name: "Sok z cytryny", measure: "ml" },
   { id: 86, name: "Sok z limonki", measure: "ml" },
