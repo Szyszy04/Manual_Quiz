@@ -65,7 +65,7 @@ export const ingredients = [
   { id: 65, name: "Mozart Black Dark Chocolate", measure: "ml" },
   { id: 66, name: "Napar z herbaty Earl Grey", measure: "ml" },
   { id: 67, name: "Noilly Prat", measure: "ml" },
-  { id: 68, name: "Hayman’s Old Tom Gin", measure: "ml" },
+  { id: 68, name: "Hayman's Old Tom Gin", measure: "ml" },
   { id: 69, name: "Oleo Saccharum", measure: "ml" },
   { id: 70, name: "Orange Bitters", measure: "dash" },
   { id: 71, name: "Orgeat", measure: "ml" },
