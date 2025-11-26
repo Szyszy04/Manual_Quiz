@@ -102,7 +102,7 @@ export const recipes = {
     {"ingredientId": 38, "amount": 20},
     {"ingredientId": 11, "amount": 10},
     {"ingredientId": 9, "amount": 1},
-    {"ingredientId": 113, "amount": 0.5}
+    {"ingredientId": 113, "amount": 2}
   ],
 
   "Cuba Libre": [
@@ -120,7 +120,7 @@ export const recipes = {
   "Dark 'n' Stormy": [
     {"ingredientId": 53, "amount": 40},
     {"ingredientId": 9, "amount": 1},
-    {"ingredientId": 113, "amount": 0.25},
+    {"ingredientId": 113, "amount": 1},
     {"ingredientId": 97, "amount": 100}
   ],
 
