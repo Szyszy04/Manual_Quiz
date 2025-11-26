@@ -59,6 +59,43 @@ createApp({
 
     // ===== FUNKCJE POMOCNICZE =====
 
+    const HIDDEN_DRINKS_KEY = 'bartender_quiz_hidden_drinks';
+
+    function loadHiddenDrinks() {
+      try {
+        const stored = localStorage.getItem(HIDDEN_DRINKS_KEY);
+        return stored ? JSON.parse(stored) : [];
+      } catch (e) {
+        console.warn('Błąd przy ładowaniu:', e);
+        return [];
+      }
+    }
+
+    function saveHiddenDrinks(drinks) {
+      try {
+        localStorage.setItem(HIDDEN_DRINKS_KEY, JSON.stringify(drinks));
+      } catch (e) {
+        console.warn('Błąd przy zapisywaniu:', e);
+      }
+    }
+
+    function hideCompletedDrink(drinkName) {
+      console.log(drinkName)
+      const hiddenDrinks = loadHiddenDrinks();
+      if (!hiddenDrinks.includes(drinkName)) {
+        hiddenDrinks.push(drinkName);
+        saveHiddenDrinks(hiddenDrinks);
+      }
+    }
+
+    function getHiddenDrinksCount() {
+      return loadHiddenDrinks().length;
+    }
+
+    function resetHiddenDrinks() {
+      localStorage.removeItem(HIDDEN_DRINKS_KEY);
+    }
+
     function getCategoryEmoji(category) {
       const emojiMap = {
         'Wódka': '🍀',
@@ -77,7 +114,7 @@ createApp({
         "Główne alkohole": [
           "Ostoya", "Aster Gin", "Bombay Sapphire", "Archer's", "Hayman's Old Tom Gin", "Hayman's Sloe Gin", "Fords",
           "Dewar's 12 YO", "Dewar's 8 Caribbean Smooth", "Maker's Mark", "Jim Beam Black", "Jim Beam Rye", "Tullamore DEW",
-          "Bacardi 4 Anejo Cuatro", "Bank's Rum", "Bacardi Carta Oro", "Smith & Cross", "Rum Bar White Overproof", "Bacardi Spiced", "Bacardi 8 yo", "Bacardi Carta Blanca",
+          "Bacardi 4 Anejo Cuatro", "Bank's Rum", "Bacardi Carta Oro", "Smith & Cross", "Rum Bar White Overproof", "Bacardi Spicedm", "Bacardi 8 yo", "Bacardi Carta Blanca",
           "Rooster Rojo Blanc", "Pisco", "Cachaça"
         ],
         "Dodatkowe alkohole": [
@@ -273,19 +310,40 @@ createApp({
       return [];
     });
 
+    const remainingDrinksCount = computed(() => {
+      return getDrinksFromSelectedCategories().length;
+    });
+
+    const completedDrinksCount = computed(() => {
+      return getHiddenDrinksCount();
+    });
+
+    const totalDrinksCount = computed(() => {
+      const all = getDrinksFromSelectedCategories().length + getHiddenDrinksCount();
+      return all;
+    });
+
+    const progressPercentage = computed(() => {
+      if (totalDrinksCount.value === 0) return 0;
+      return Math.round((completedDrinksCount.value / totalDrinksCount.value) * 100);
+    });
+
     // ===== FUNKCJE QUIZ =====
 
     function getDrinksFromSelectedCategories() {
       const availableDrinks = [];
+      const hiddenDrinks = loadHiddenDrinks();
+
       selectedAlcoholCategoriesList.value.forEach(category => {
         if (drinkCategories[category]) {
           drinkCategories[category].forEach(drinkName => {
-            if (recipes[drinkName]) {
+            if (recipes[drinkName] && !hiddenDrinks.includes(drinkName)) {
               availableDrinks.push(drinkName);
             }
           });
         }
       });
+
       return availableDrinks;
     }
 
@@ -476,6 +534,7 @@ createApp({
             nextBuilderQuestion();
           }, 5000);
         } else {
+          firstAtempt.value = false;
           setTimeout(() => {
             resetCurrentBuilderQuestion();
           }, 5000);
@@ -506,6 +565,7 @@ createApp({
             nextBuilderQuestion();
           }, 3000);
         } else {
+          firstAtempt.value = false;
           setTimeout(() => {
             resetCurrentBuilderQuestion();
           }, 3000);
@@ -525,6 +585,7 @@ createApp({
             nextBuilderQuestion();
           }, 3000);
         } else {
+          firstAtempt.value = false;
           setTimeout(() => {
             resetCurrentBuilderQuestion();
           }, 3000);
@@ -541,30 +602,52 @@ createApp({
       decorationOptions.value = shuffleArray(options);
     }
 
+    const firstAtempt = ref(true);
+
     function checkDecoration(decoration) {
-      selectedDecoration.value = decoration;
-      if (decoration === correctDecoration.value) {
-        score.value++;
-        showFullRecipe.value = true;
-        setTimeout(() => {
-          showFullRecipe.value = false;
-          nextBuilderQuestion();
-        }, 4000);
-      } else {
-        showFullRecipe.value = true;
-        if (!practiceMode.value) {
-          setTimeout(() => {
-            showFullRecipe.value = false;
-            nextBuilderQuestion();
-          }, 4000);
-        } else {
-          setTimeout(() => {
-            showFullRecipe.value = false;
-            resetCurrentBuilderQuestion();
-          }, 4000);
-        }
-      }
+  selectedDecoration.value = decoration;
+  
+  if (decoration === correctDecoration.value) {
+    // UKRYJ DRINKA JEŚLI PIERWSZY ATEMPT
+    if (firstAtempt.value) {
+      const drinkName = currentQuestion.value.drinkName;
+      hideCompletedDrink(drinkName);
     }
+    
+    score.value++;
+    showFullRecipe.value = true;
+    
+    setTimeout(() => {
+      showFullRecipe.value = false;
+      
+      firstAtempt.value = true;
+      nextBuilderQuestion();
+    }, 4000);
+    
+  } else {
+    // BŁĄD
+    showFullRecipe.value = true;
+    
+    if (!practiceMode.value) {
+      // Normalny tryb - przejdź do następnego
+      setTimeout(() => {
+        showFullRecipe.value = false;
+        
+        firstAtempt.value = true;
+        nextBuilderQuestion();
+      }, 4000);
+      
+    } else {
+      // Practice mode - pozwól spróbować jeszcze raz
+      firstAtempt.value = false; 
+      
+      setTimeout(() => {
+        showFullRecipe.value = false;
+        resetCurrentBuilderQuestion();
+      }, 4000);
+    }
+  }
+}
 
     function resetCurrentBuilderQuestion() {
       builderStep.value = 1;
@@ -831,7 +914,18 @@ createApp({
 
       // Other
       glassOptions,
-      findDrinkByNameLocal
+      findDrinkByNameLocal,
+
+      // Hidden drinks management
+      loadHiddenDrinks,
+      saveHiddenDrinks,
+      hideCompletedDrink,
+      getHiddenDrinksCount,
+      resetHiddenDrinks,
+      remainingDrinksCount,
+      completedDrinksCount,
+      totalDrinksCount,
+      progressPercentage
     };
   }
 }).mount('#app');
