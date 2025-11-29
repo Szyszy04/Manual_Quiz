@@ -3,7 +3,7 @@
 // Zunifikowana lista składników z miarami
 export const ingredients = [
   { id: 1, name: "Absynth", measure: "ml" },
-  { id: 2, name: "Absynth Spray", measure: "spray" },
+  { id: 2, name: "Absynth", measure: "ml" },
   { id: 3, name: "Agave Mix", measure: "ml" },
   { id: 4, name: "Dewar's 12 YO", measure: "ml" },
   { id: 5, name: "Bacardi 4 Anejo Cuatro", measure: "ml" },
