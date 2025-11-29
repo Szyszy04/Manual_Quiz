@@ -118,7 +118,7 @@ createApp({
           "Rooster Rojo Blanc", "Pisco", "Cachaça"
         ],
         "Dodatkowe alkohole": [
-          "Hennessy V.S.", "Cherry Brandy", "Papidoux V.S.O.P.", "Absynth", "Absynth Spray", "Islay Malt Spray",
+          "Hennessy V.S.", "Cherry Brandy", "Papidoux V.S.O.P.", "Absynth", "Islay Malt Spray",
           "Carpano Antica Formula", "Cocchi Americano", "Lillet Blanc", "Martini Bitter", "Martini Extra Dry",
           "Martini Fiero", "Martini Rubino", "Martini Vibrante", "Noilly Prat", "Prosecco", "Red Wine", "Ruby Port"
         ],
