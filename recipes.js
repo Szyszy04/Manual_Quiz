@@ -180,7 +180,7 @@ export const recipes = {
 
   "Mojito": [
     {"ingredientId": 5, "amount": 50},
-    {"ingredientId": 113, "amount": 0.5},
+    {"ingredientId": 113, "amount": 2},
     {"ingredientId": 93, "amount": 15},
     {"ingredientId": 57, "amount": 8},
     {"ingredientId": 101, "amount": 100}
