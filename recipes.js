@@ -107,7 +107,7 @@ export const recipes = {
 
   "Cuba Libre": [
     {"ingredientId": 5, "amount": 40},
-    {"ingredientId": 113, "amount": 0.5},
+    {"ingredientId": 113, "amount": 1},
     {"ingredientId": 31, "amount": 100}
   ],
 
