@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta author="Wiktor">
     <meta charset="UTF-8">
@@ -8,6 +9,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="app">
         <!-- START SCREEN -->
@@ -22,11 +24,9 @@
                     <p class="help-text">Pytania będą dotyczyć tylko wybranych kategorii</p>
 
                     <div class="alcohol-categories">
-                        <label v-for="(selected, category) in selectedAlcoholCategories" 
-                               :key="category" 
-                               class="category-option">
-                            <input type="checkbox" 
-                                   v-model="selectedAlcoholCategories[category]">
+                        <label v-for="(selected, category) in selectedAlcoholCategories" :key="category"
+                            class="category-option">
+                            <input type="checkbox" v-model="selectedAlcoholCategories[category]">
                             <div class="category-name">
                                 <span>{{ getCategoryEmoji(category) }}</span>
                                 <span>{{ category }}</span>
@@ -77,7 +77,8 @@
                                 <div v-if="selectedCategories.builder" class="practice-mode-option">
                                     <label class="practice-toggle">
                                         <input type="checkbox" v-model="practiceMode">
-                                        <span class="practice-label">🎓 Zawsze dobrze! (powtarzasz drinka do puki nie zrobisz go dobrze)</span>
+                                        <span class="practice-label">🎓 Zawsze dobrze! (powtarzasz drinka do puki nie
+                                            zrobisz go dobrze)</span>
                                     </label>
                                 </div>
                             </div>
@@ -86,9 +87,8 @@
                 </div>
 
                 <div class="actions">
-                    <button v-if="hasSelectedCategories && hasSelectedAlcoholCategories" 
-                            @click="startQuiz" 
-                            class="btn btn-primary">
+                    <button v-if="hasSelectedCategories && hasSelectedAlcoholCategories" @click="startQuiz"
+                        class="btn btn-primary">
                         🚀 Rozpocznij Quiz
                     </button>
                     <button v-else class="btn btn-primary disabled">
@@ -98,6 +98,57 @@
 
                 <div v-if="!hasSelectedAlcoholCategories" class="warning">
                     ⚠️ Wybierz przynajmniej jedną kategorię alkoholu!
+                </div>
+
+                <div class="progress-container"
+                    style="margin: 20px 0; padding: 20px; background: #f5f5f5; border-radius: 8px;">
+                    <h3 style="margin-top: 0; color: #333;">📊 Postęp - Tryb "Wszystkie drinki"</h3>
+
+                    <!-- Info tekstowe -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                        <div>
+                            <p style="margin: 0 0 5px 0; font-size: 0.9em; color: #666;">Ukończone:</p>
+                            <p style="margin: 0; font-size: 1.3em; font-weight: bold; color: #4CAF50;">
+                                {{ completedDrinksCount }} / {{ totalDrinksCount }}
+                            </p>
+                        </div>
+                        <div>
+                            <p style="margin: 0 0 5px 0; font-size: 0.9em; color: #666;">Pozostało:</p>
+                            <p style="margin: 0; font-size: 1.3em; font-weight: bold; color: #2196F3;">
+                                {{ remainingDrinksCount }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pasek postępu -->
+                    <div style="margin-bottom: 10px;">
+                        <progress :value="completedDrinksCount" :max="totalDrinksCount"
+                            style="width: 100%; height: 25px; border-radius: 4px;">
+                        </progress>
+                    </div>
+
+                    <!-- Procent -->
+                    <p style="margin: 0; text-align: center; font-size: 0.9em; color: #666; font-weight: bold;">
+                        {{ progressPercentage }}% ukończone
+                    </p>
+
+                    <!-- Przycisk resetu -->
+                    <button @click="resetHiddenDrinks" style="
+      width: 100%;
+      margin-top: 15px;
+      padding: 10px;
+      background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    " @mouseover="$event.target.style.transform = 'scale(1.02)'"
+                        @mouseout="$event.target.style.transform = 'scale(1)'">
+                        🔄 Start od nowa (resetuj wszystkie drinki)
+                    </button>
                 </div>
             </div>
         </div>
@@ -122,13 +173,10 @@
                     </div>
 
                     <!-- Zwykłe odpowiedzi -->
-                    <div v-if="!currentQuestion.answers || currentQuestion.answers.length <= 4" 
-                         class="answers-grid simple-answers">
-                        <button v-for="(answer, index) in shuffledAnswers" 
-                                :key="index"
-                                @click="answerQuestion(index)"
-                                :disabled="answerSelected"
-                                :class="['answer-btn', getAnswerClass(index)]">
+                    <div v-if="!currentQuestion.answers || currentQuestion.answers.length <= 4"
+                        class="answers-grid simple-answers">
+                        <button v-for="(answer, index) in shuffledAnswers" :key="index" @click="answerQuestion(index)"
+                            :disabled="answerSelected" :class="['answer-btn', getAnswerClass(index)]">
                             {{ answer }}
                         </button>
                     </div>
@@ -169,11 +217,10 @@
                                     <h5>{{ group.categoryName }}</h5>
                                 </div>
                                 <div class="ingredient-category-content">
-                                    <button v-for="ingredient in group.ingredients" 
-                                            :key="ingredient"
-                                            @click="toggleIngredient(ingredient)"
-                                            :class="['ingredient-btn', { 'selected': selectedIngredients.has(ingredient) }]"
-                                            :title="ingredient">
+                                    <button v-for="ingredient in group.ingredients" :key="ingredient"
+                                        @click="toggleIngredient(ingredient)"
+                                        :class="['ingredient-btn', { 'selected': selectedIngredients.has(ingredient) }]"
+                                        :title="ingredient">
                                         {{ ingredient }}
                                     </button>
                                 </div>
@@ -190,13 +237,10 @@
                         <h4>Krok 2: Wprowadź proporcje składników (ml)</h4>
 
                         <div class="proportions-input">
-                            <div v-for="(amount, ingredient) in ingredientAmounts" 
-                                 :key="ingredient" 
-                                 class="proportion-item">
+                            <div v-for="(amount, ingredient) in ingredientAmounts" :key="ingredient"
+                                class="proportion-item">
                                 <label>{{ ingredient }}</label>
-                                <input v-model="ingredientAmounts[ingredient]" 
-                                       type="number" 
-                                       placeholder="ml">
+                                <input v-model="ingredientAmounts[ingredient]" type="number" placeholder="ml">
                                 <span>ml</span>
                             </div>
                         </div>
@@ -211,10 +255,8 @@
                         <h4>Krok 3: Wybierz odpowiednie szkło</h4>
 
                         <div class="glasses-grid">
-                            <button v-for="glass in shuffledGlassOptions" 
-                                    :key="glass"
-                                    @click="selectGlass(glass)"
-                                    :class="['glass-btn', { 'selected': selectedGlass === glass }]">
+                            <button v-for="glass in shuffledGlassOptions" :key="glass" @click="selectGlass(glass)"
+                                :class="['glass-btn', { 'selected': selectedGlass === glass }]">
                                 {{ glass }}
                             </button>
                         </div>
@@ -229,26 +271,25 @@
                         <h4>Krok 4: Wybierz odpowiednią dekorację</h4>
 
                         <div class="decorations-grid">
-                            <button v-for="(decoration, index) in decorationOptions" 
-                                    :key="index"
-                                    @click="checkDecoration(decoration)"
-                                    :class="['decoration-btn', { 'selected': selectedDecoration === decoration }]">
+                            <button v-for="(decoration, index) in decorationOptions" :key="index"
+                                @click="checkDecoration(decoration)"
+                                :class="['decoration-btn', { 'selected': selectedDecoration === decoration }]">
                                 {{ decoration }}
                             </button>
                         </div>
                     </div>
 
                     <!-- Wyświetlenie pełnego przepisu po wyborze dekoracji -->
-                    <div v-if="showFullRecipe && builderStep === 4" class="recipe-reveal" :class="{ 'success': selectedDecoration === correctDecoration, 'error': selectedDecoration !== correctDecoration }">
+                    <div v-if="showFullRecipe && builderStep === 4" class="recipe-reveal"
+                        :class="{ 'success': selectedDecoration === correctDecoration, 'error': selectedDecoration !== correctDecoration }">
                         <h4 v-if="selectedDecoration === correctDecoration">✅ Doskonale! Pełny przepis:</h4>
                         <h4 v-else>❌ Niepoprawnie! Pełny przepis:</h4>
 
                         <div class="recipe">
                             <h5>{{ currentQuestion.drinkName }}</h5>
                             <div class="ingredients-list">
-                                <div v-for="ingredient in builderCorrectRecipeWithNames" 
-                                     :key="ingredient.name" 
-                                     class="ingredient">
+                                <div v-for="ingredient in builderCorrectRecipeWithNames" :key="ingredient.name"
+                                    class="ingredient">
                                     <span class="amount">{{ ingredient.amount }} ml</span>
                                     <span class="name">{{ ingredient.name }}</span>
                                 </div>
@@ -262,9 +303,8 @@
                     <div v-if="showBuilderRecipe" class="recipe-reveal error">
                         <h4>❌ Niepoprawnie! Poprawny przepis:</h4>
                         <div class="recipe">
-                            <div v-for="ingredient in builderCorrectRecipeWithNames" 
-                                 :key="ingredient.name" 
-                                 class="ingredient">
+                            <div v-for="ingredient in builderCorrectRecipeWithNames" :key="ingredient.name"
+                                class="ingredient">
                                 <span class="amount">**{{ ingredient.amount }} ml**</span>
                                 <span class="name">{{ ingredient.name }}</span>
                             </div>
@@ -331,4 +371,5 @@
     <!-- SKRYPTY -->
     <script type="module" src="app.js"></script>
 </body>
+
 </html>
