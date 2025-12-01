@@ -113,7 +113,7 @@ export const drinkGlasses = {
     "Zombie": "Collins",
     "PINK CHIHUAHUA": "Nick & Nora",
     "margarita": "Nick & Nora",
-    "TOMMY’S MARGARITA": "Short",
+    "TOMMY'S MARGARITA": "Short",
     "LA PALOMA": "Collins",
     "NEGRONI 0%": "Short",
     "Martini Fiero spritz": "Copa Martini",
@@ -193,7 +193,7 @@ export const drinkDecorations = {
 "Southside": "Mięta w czipsie limonkowym",
 "Nuclear Daiquiri": "Mięta w czipsie limonkowym",
 "Classic Rum Swizzle": "Bukiet mięty + czips z limonki",
-"TOMMY’S MARGARITA": "czips z ananas",
+"TOMMY'S MARGARITA": "czips z ananas",
 "Kyiv Mule": "2 szczypy mięty + ćwiartka limonki",
 "Dark 'n' Stormy": "2 szczypy mięty",
 "Fish House Punch": "3 szczypy mięty + ćwiartka cytryny",
@@ -301,7 +301,7 @@ export const drinkCategories = {
     "Tequila": [
         "PINK CHIHUAHUA",
         "margarita",
-        "TOMMY’S MARGARITA",
+        "TOMMY'S MARGARITA",
         "LA PALOMA",
     ],
     "Bezalkoholowe": [
