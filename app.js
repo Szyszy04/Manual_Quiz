@@ -28,11 +28,11 @@ createApp({
 
     const selectedAlcoholCategories = ref({
       'Wódka': true,
-      'Gin': false,
-      'Whiskey': false,
-      'Rum': false,
-      'Tequila': false,
-      'Bezalkoholowe': false
+      'Gin': true,
+      'Whiskey': true,
+      'Rum': true,
+      'Tequila': true,
+      'Bezalkoholowe': true
     });
 
     const questions = ref([]);
