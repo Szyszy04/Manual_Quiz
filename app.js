@@ -548,6 +548,22 @@ createApp({
 
       let isCorrect = true;
       for (let ingredient of correct) {
+        // Pobierz ID składnika aby sprawdzić jego miarę
+        const recipeItem = recipes[currentQuestion.value.drinkName].find(r => {
+          const ing = getIngredientById(r.ingredientId);
+          return ing && ing.name === ingredient.name;
+        });
+
+        // Specjalne miary - nie wymagają proporcji (auto accept)
+        if (recipeItem) {
+          const ingredientData = getIngredientById(recipeItem.ingredientId);
+          if (ingredientData && ['top_up', 'hot_water', 'stick', 'spray', 'unit'].includes(ingredientData.measure)) {
+            // Dla tych miar proporcja jest zawsze poprawna - przeskocz walidację
+            continue;
+          }
+        }
+
+        // Dla pozostałych składników - sprawdzaj proporcje
         const userAmount = parseFloat((ingredientAmounts.value[ingredient.name] || '').toString().replace(',', '.')) || 0;
         if (Math.abs(userAmount - ingredient.amount) > 0) {
           isCorrect = false;
@@ -767,8 +783,8 @@ createApp({
         }
 
         if (selectedCategories.value.builder) {
-          for (let i = 0; i < 5; i++) {
-            const question = createQuestion('builder');
+          for (let i = 0; i < availableDrinks.length; i++) {
+            const question = createBuilderQuestion();
             if (question) selectedQuestions.push(question);
           }
         }
