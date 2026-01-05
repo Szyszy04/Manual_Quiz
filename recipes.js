@@ -341,7 +341,8 @@ export const recipes = {
     "Old fashioned": [
     {"ingredientId": 19, "amount": 50},
     {"ingredientId": 90, "amount": 5},
-    {"ingredientId": 9, "amount": 3}
+    {"ingredientId": 9, "amount": 3},
+    {"ingredientId": 70, "amount": 1}
   ],
 
   "PAPER PLANE": [
