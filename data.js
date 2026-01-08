@@ -107,7 +107,7 @@ export const drinkGlasses = {
     "Mojito Norblito": "Collins",
     "Nuclear Daiquiri": "Nick & Nora",
     "Old Cuban": "Collins",
-    "Queen's Park Swizzle": "Collins",
+    "Queen's Park Swizzle": "Swizzle Glass",
     "Pisco Sour": "Nick & Nora",
     "Right Hand Cocktail": "Short",
     "Zombie": "Collins",
