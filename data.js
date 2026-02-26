@@ -253,7 +253,7 @@ export const drinkCategories = {
         "BIJOU",
         "Bombay & Tonic",
         "BRAMBLE",
-        "BREAKFAST MARTINI",
+       // "BREAKFAST MARTINI",
         "CHARLIE CHAPLIN",
         "CHRYSANTHEMUM",
         "CLOVER CLUB",
@@ -306,10 +306,10 @@ export const drinkCategories = {
     ],
     "Bezalkoholowe": [
         "NEGRONI 0%",
-        "Martini Fiero spritz",
-        "Martini Fiero & Tonik",
-        "Vibrante/Floreale Tonik",
-        "Martini vibrante/floreale spritz",
+       // "Martini Fiero spritz",
+       // "Martini Fiero & Tonik",
+       // "Vibrante/Floreale Tonik",
+       // "Martini vibrante/floreale spritz",
     ],
     "Whiskey": [
         "Amaretto Sour",
