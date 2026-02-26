@@ -557,7 +557,7 @@ createApp({
         // Specjalne miary - nie wymagają proporcji (auto accept)
         if (recipeItem) {
           const ingredientData = getIngredientById(recipeItem.ingredientId);
-          if (ingredientData && ['top_up', 'hot_water', 'stick', 'spray', 'unit'].includes(ingredientData.measure)) {
+          if (ingredientData && ['top_up', 'hot_water', 'stick', 'spray', 'unit', 'leaves', 'slice', 'quarter'].includes(ingredientData.measure)) {
             // Dla tych miar proporcja jest zawsze poprawna - przeskocz walidację
             continue;
           }
